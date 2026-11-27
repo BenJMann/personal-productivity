@@ -1,0 +1,45 @@
+{
+  "name": "personal-productivity",
+  "productName": "Personal Productivity",
+  "version": "0.1.0",
+  "description": "A GTD-style productivity app: inbox, projects, tags, task views, calendar and time tracking.",
+  "author": "Ben Mann <ben.mann108@gmail.com>",
+  "license": "MIT",
+  "main": "electron/main.js",
+  "homepage": "./",
+  "scripts": {
+    "start": "node scripts/bundle.js && electron .",
+    "dev": "node scripts/bundle.js --watch",
+    "dist": "node scripts/bundle.js && electron-builder --linux deb",
+    "dist:win": "node scripts/bundle.js && electron-builder --win nsis"
+  },
+  "build": {
+    "appId": "com.personal.productivity",
+    "productName": "Personal Productivity",
+    "files": [
+      "electron/**/*",
+      "renderer/index.html",
+      "renderer/styles.css",
+      "renderer/dist/**/*",
+      "package.json"
+    ],
+    "linux": {
+      "target": "deb",
+      "category": "Office",
+      "maintainer": "Ben Mann <ben.mann108@gmail.com>"
+    },
+    "win": {
+      "target": "nsis"
+    }
+  },
+  "dependencies": {
+    "immer": "^11.2.9",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "electron": "^45.0.0",
+    "electron-builder": "^26.15.3",
+    "esbuild": "^0.28.2"
+  }
+}
